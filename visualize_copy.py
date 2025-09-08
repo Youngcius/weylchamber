@@ -190,7 +190,7 @@ class WeylChamber():
             'Q'   : self.Q  + np.array((0, 0.01, 0.03)),
         }
         self.label_properties = {
-            'color': 'purple',  'fontsize': 'small'
+            'color': 'purple',  'fontsize': 'small',
         }
         self.tex_labels = True
         self.z_axis_left = True
@@ -281,6 +281,7 @@ class WeylChamber():
         pass # plot everything else
         # labels
         for label in self.labels:
+            # continue # skip drawing labels for now
             c1, c2, c3 = self.labels[label]
             if label == 'O' or label == 'A_1':
                 continue
@@ -312,6 +313,7 @@ class WeylChamber():
         ax.set_xlabel(r'$c_1/\pi$')
         ax.set_ylabel(r'$c_2/\pi$')
         ax.set_zlabel(r'$c_3/\pi$')
+        # ax.set_box_aspect([1, 0.8, 0.6]) 
         if self.full_cube:
             ax.set_xlim(0, 1)
             ax.set_ylim(0, 1)
@@ -342,6 +344,10 @@ class WeylChamber():
         [t.set_ha('left') for t in ax.get_yticklabels()]
         [t.set_va('center') for t in ax.get_zticklabels()]
         [t.set_ha('right') for t in ax.get_zticklabels()]
+
+
+
+
 
     def plot(self, fig=None):
         """Generate a plot of the Weyl chamber on the given figure, or create a
